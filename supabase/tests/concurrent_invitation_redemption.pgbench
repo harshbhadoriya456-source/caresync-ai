@@ -1,0 +1,12 @@
+SELECT pg_catalog.set_config(
+  'request.jwt.claim.sub',
+  CASE
+    WHEN :client_id = 0 THEN 'd0000000-0000-4000-8000-000000000011'
+    ELSE 'd0000000-0000-4000-8000-000000000012'
+  END,
+  false
+);
+
+SELECT pg_catalog.count(*) FROM public.redeem_care_invitation(
+  'cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc'
+);
